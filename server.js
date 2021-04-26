@@ -1,14 +1,13 @@
-const express = require('express')
+const express = require("express");
 // const bodyParser = require('body-parser')
 
-const app = express()
-const port = process.env.PORT || 4000
+const app = express();
+const port = process.env.PORT || 4000;
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => res.json({ message: "customer app" }))
+app.get("/", (req, res) => res.json({ message: "customer app" }));
 
-app.listen(port, () => console.log(`Server is running at port ${port}`))
-
-
+require("./app/routes/customer.routes")(app);
+app.listen(port, () => console.log(`Server is running at port ${port}`));
